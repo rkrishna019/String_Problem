@@ -1,0 +1,20 @@
+class Solution
+{
+    //Function to find the first non-repeating character in a string.
+    static char nonrepeatingCharacter(String S)
+    {
+       int  CHAR = 256;
+         int[] count = new int[CHAR];
+        for(int i=0;i<S.length();i++){
+            count[S.charAt(i)]++;
+        }
+        
+        for(int i=0;i<S.length();i++){
+            if(count[S.charAt(i)]==1){
+                return S.charAt(i) ;
+            }
+        }
+        return '$';
+    }
+}
+
