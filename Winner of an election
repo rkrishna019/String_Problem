@@ -1,0 +1,35 @@
+class Solution
+{
+    //Function to return the name of candidate that received maximum votes.
+    public static String[] winner(String arr[], int n)
+    {
+        HashMap<String,Integer> hm = new HashMap<>();
+        int max_votes = Integer.MIN_VALUE;
+        String Winner = "";
+        for(int i=0;i<n;i++){
+            if(hm.containsKey(arr[i])){
+                hm.put(arr[i],hm.get(arr[i])+1);
+            }
+            else{
+                hm.put(arr[i],1);
+            }
+        }
+        
+        for(Map.Entry<String,Integer>ans:hm.entrySet()){
+            if(max_votes < ans.getValue()){
+                max_votes = ans.getValue();
+                Winner = ans.getKey();
+            }
+            else if(ans.getValue()==max_votes){
+                if(ans.getKey().compareTo(Winner)<0){
+                    Winner = ans.getKey();
+                }
+            }
+        }
+        String res[] = new String[2];
+        res[0] = Winner;
+        res[1] = max_votes+"";
+        return res;
+    }
+}
+
