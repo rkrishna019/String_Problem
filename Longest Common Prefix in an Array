@@ -1,0 +1,43 @@
+class Solution{
+    
+    String compare( String a, String b){
+        
+        int i=0; int j=0;
+        String res = "";
+        
+        while(i<a.length() && j<b.length()){
+            
+            if(a.charAt(i) == b.charAt(j)){
+                
+                res += b.charAt(j);
+                
+            }
+            else{
+                return res;
+            }
+            i++;
+            j++;
+        }
+        
+        return res;
+        
+    }
+    
+    String longestCommonPrefix(String arr[], int n){
+        
+        String ans = arr[0];
+        for(int i=0;i<n;i++){
+            
+            String x= compare(ans, arr[i+1]);
+            
+            if(x.equals("")){
+                return "-1";
+            }
+            
+            ans = x;
+            
+        }
+        return ans;
+        
+        }
+    }
