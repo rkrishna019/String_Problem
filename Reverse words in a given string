@@ -1,0 +1,34 @@
+class Solution 
+{
+    //Function to reverse words in a given string.
+  
+    String reverseWords(String S)
+    {
+        // code here 
+        int n = S.length();
+        char[] str = S.toCharArray();
+        int start=0;
+        for(int end=0;end<n;end++)
+        {
+            if(str[end]=='.'){
+            reverseword(str,start,end-1);
+            start=end+1;
+            }
+        }
+        reverseword(str,start,n-1);
+        reverseword(str,0,n-1);
+        String s = new String(str);
+        return s;
+    }
+    void reverseword(char str[],int low,int high)
+    {
+        while(low<=high)
+        {
+            char temp = str[low];
+            str[low] = str[high];
+            str[high] = temp;
+            low++;
+            high--;
+        }
+    }
+}
