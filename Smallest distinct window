@@ -1,0 +1,45 @@
+class Solution {
+    static final int CHAR = 266;
+    public int findSubString( String str) {
+        
+        int n = str.length();
+        HashMap<Character,Integer> map = new HashMap<>();
+        
+        for(int i=0;i<n;i++){
+            if(map.containsKey(str.charAt(i))){
+                map.put(str.charAt(i),map.get(str.charAt(i))+1);
+            }
+            else{
+                map.put(str.charAt(i),1);
+            }
+        }
+        int counter =0;
+        int dist_count = map.size();
+        int start = 0;
+        int index = -1;
+        int min_length = Integer.MAX_VALUE;
+        int count[] = new int[CHAR]; 
+        for(int i=0;i<n;i++){
+            
+            count[str.charAt(i)]++;
+            
+            if(count[str.charAt(i)]==1){
+                counter++;
+            }
+            if(counter == dist_count){
+                while(count[str.charAt(start)]>1){
+                    if(count[str.charAt(start)]>1){
+                        count[str.charAt(start)]--;
+                    }
+                    start++;
+                }
+            int window_length = i-start+1;
+            if(min_length > window_length){
+                min_length = window_length;
+                index = start;
+            }
+        }
+        }
+        return min_length;
+    }
+}
