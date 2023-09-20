@@ -1,0 +1,30 @@
+class Solution
+{
+    public String FirstNonRepeating(String A)
+    {
+        Queue<Character> q = new LinkedList<>();
+        int count[] = new int[256];
+        String ans = "";
+        for(int i=0;i<A.length();i++){
+            
+            count[A.charAt(i)]++;
+            
+            if(count[A.charAt(i)] == 1){
+                q.offer(A.charAt(i));
+            }
+            while(!q.isEmpty() && count[q.peek()]>1){
+                q.poll();
+            }
+            
+            if(q.isEmpty()){
+                ans += '#';
+            }
+            
+            else{
+                ans += q.peek();
+            }
+        }
+        
+        return ans;
+    }
+}
